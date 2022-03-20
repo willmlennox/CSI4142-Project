@@ -1,0 +1,11 @@
+EventKey,Disaster Group,Disaster Subgroup,Disaster Type,Disaster Subtype,Event Name,Start Year,Start Month,Start Day,End Year,End Month,End Day,Total Deaths,No Injured,No Affected,No Homeless,Total Affected,"Total Damages, Adjusted ('000 US$)"
+7081,Natural,Storm,Meteorological,Convective storm,,2020,April,22,2020,April,27,3,13,30000,,30013,
+7082,Natural,Flood,Hydrological,Coastal flood,,2007,August,5,2007,August,7,74,130,416000,,416130,162270
+7083,Natural,Epidemic,Biological,Viral disease,Dengue,2016,January,1,2016,September,30,27,79204,,,79204,
+7084,Natural,Storm,Meteorological,Tropical cyclone,Durian (Reming),2006,November,30,2006,December,8,95,1360,975000,250000,1226360,585430
+7085,Natural,Storm,Meteorological,Tropical cyclone,Typhoon 'Damrey' / 'Ramil',2017,November,4,2017,November,5,123,,4330000,,4330000,1055856
+7086,Natural,Flood,Hydrological,Flash flood,,2010,October,1,2010,October,6,84,75,679750,,679825,169134
+7087,Natural,Flood,Hydrological,Riverine flood,,2016,October,9,2016,October,16,35,30,659390,195,659615,112450
+7088,Technological,Industrial accident,Technological,Explosion,Military Firework factory,2013,October,12,2013,October,12,24,97,4385,30,4512,
+7089,Natural,Storm,Meteorological,Tropical cyclone,"Typhoon ""Hagupit"" (Nina)",2008,September,25,2008,September,28,46,61,51755,6695,58511,75731
+7090,Natural,Storm,Meteorological,Tropical cyclone,Typhoon Wutip ,2013,September,30,2013,October,15,31,330,1835255,,1835585,736837

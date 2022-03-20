@@ -1,0 +1,11 @@
+EventKey,Disaster Group,Disaster Subgroup,Disaster Type,Disaster Subtype,Event Name,Start Year,Start Month,Start Day,End Year,End Month,End Day,Total Deaths,No Injured,No Affected,No Homeless,Total Affected,"Total Damages, Adjusted ('000 US$)"
+7051,Technological,Transport accident,Technological,Air,Bi-motor,2008,November,4,2008,November,4,15,7,,,7,
+7052,Natural,Epidemic,Biological,Viral disease,Dengue,2009,October,,2009,December,,,,41687,,41687,
+7053,Natural,Flood,Hydrological,Riverine flood,,2009,October,2,2009,October,2,10,14,13000,,13014,
+7054,Technological,Transport accident,Technological,Road,,2009,April,16,2009,April,16,18,66,,,66,
+7055,Natural,Storm,Meteorological,Tropical cyclone,Hurricane Karl,2010,September,15,2010,September,17,12,,230000,,230000,4628930
+7056,Technological,Industrial accident,Technological,Explosion,Gaz factory,2012,September,19,2012,September,19,32,26,,,26,
+7057,Natural,Storm,Meteorological,Tropical cyclone,Hurricane Manuel ,2013,September,13,2013,September,20,169,,105000,,105000,4666125
+7058,Technological,Miscellaneous accident,Technological,Explosion,Fireworks,2013,March,15,2013,March,15,17,80,,,80,
+7059,Technological,Industrial accident,Technological,Explosion,Petrochimical plant,2016,April,21,2016,April,21,32,100,,,100,
+7060,Natural,Earthquake,Geophysical,Ground movement,,2017,September,17,2017,September,17,369,6000,250000,,256000,6335139

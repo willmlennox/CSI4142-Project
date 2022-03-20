@@ -1,0 +1,11 @@
+EventKey,Disaster Group,Disaster Subgroup,Disaster Type,Disaster Subtype,Event Name,Start Year,Start Month,Start Day,End Year,End Month,End Day,Total Deaths,No Injured,No Affected,No Homeless,Total Affected,"Total Damages, Adjusted ('000 US$)"
+7011,Natural,Flood,Hydrological,Flash flood,,2007,January,1,2007,January,12,59,80,200000,,200080,156029
+7012,Natural,Flood,Hydrological,Riverine flood,,2008,November,22,2008,November,24,151,15,1500000,,1500015,901561
+7013,Natural,Landslide,Hydrological,Mudslide,,2009,December,31,2010,January,28,74,,1000,,1000,174924
+7014,Natural,Epidemic,Biological,Viral disease,Dengue,2011,January,,2011,,,,,942153,,942153,
+7015,Natural,Storm,Meteorological,Convective storm,,2013,September,21,2013,September,22,2,64,13800,,13864,99988
+7016,Natural,Drought,Climatological,Drought,,2014,January,,2016,December,,,,27000000,,27000000,5466236
+7017,Natural,Storm,Meteorological,Convective storm,,2015,April,20,2015,April,20,2,97,10940,,11037,2184
+7018,Technological,Industrial accident,Technological,Collapse,Dam - Samarco,2015,November,5,2015,November,5,24,13,,637,650,
+7019,Technological,Miscellaneous accident,Technological,Fire,,2018,December,17,2018,December,18,,17,2500,,2517,
+7020,Natural,Flood,Hydrological,,,2019,November,16,2019,November,17,2,12,660,,672,

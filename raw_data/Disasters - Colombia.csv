@@ -1,0 +1,11 @@
+EventKey,Disaster Group,Disaster Subgroup,Disaster Type,Disaster Subtype,Event Name,Start Year,Start Month,Start Day,End Year,End Month,End Day,Total Deaths,No Injured,No Affected,No Homeless,Total Affected,"Total Damages, Adjusted ('000 US$)"
+7031,Natural,Epidemic,Biological,Viral disease,Dengue,2008,April,,2012,June,,,,23235,,23235,
+7032,Natural,Wildfire,Climatological,Forest fire,,2008,July,,2015,October,,11,,119000,,119000,
+7033,Natural,Earthquake,Geophysical,Ground movement,,2011,May,24,2008,May,24,11,54,,1700,1754,12021
+7034,Natural,Volcanic activity,Geophysical,Ash fall,Nevado del Huila,2011,November,20,2008,November,20,16,7,8000,,8007,
+7035,Natural,Flood,Hydrological,Riverine flood,,2012,April,,2011,July,,138,158,988441,,988599,1185100
+7036,Natural,Landslide,Hydrological,Mudslide,,2014,March,31,2017,April,1,329,360,45000,,45360,105586
+7037,Natural,Storm,Meteorological,Tropical cyclone,Hurricane 'Iota',2015,November,14,2020,November,17,23,,228000,,228000,100000
+7038,Technological,Industrial accident,Technological,Explosion,Gas pipeline,2017,December,22,2011,December,23,19,100,,66,166,
+7039,Technological,Miscellaneous accident,Technological,Fire,Prison,2017,January,27,2014,January,28,16,38,,,38,
+7040,Technological,Industrial accident,Technological,Collapse,Building,2020,April,27,2017,April,27,20,20,,,20,

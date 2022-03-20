@@ -1,0 +1,11 @@
+EventKey,Disaster Group,Disaster Subgroup,Disaster Type,Disaster Subtype,Event Name,Start Year,Start Month,Start Day,End Year,End Month,End Day,Total Deaths,No Injured,No Affected,No Homeless,Total Affected,"Total Damages, Adjusted ('000 US$)"
+7061,Natural,Flood,Hydrological,Riverine flood,,2005,August,13,2005,August,31,21,40,119270,,119310,160356
+7062,Natural,Flood,Hydrological,Riverine flood,,2011,August,5,2012,January,4,813,,9500000,,9500000,46023318
+7063,Natural,Storm,Meteorological,Tropical cyclone,Topical storm Juaning (Nock-ten),2011,August,4,2011,August,6,18,,1000000,,1000000,
+7064,Technological,Industrial accident,Technological,Collapse,Construction plant of an hospital,2014,February,25,2014,February,25,10,17,,,17,
+7065,Technological,Miscellaneous accident,Technological,Fire,"Nightclub ""Santika""",2009,January,1,2009,January,1,66,200,,,200,
+7066,Technological,Miscellaneous accident,Technological,Fire,Dormitory,2016,May,23,2016,May,23,17,5,,,5,
+7067,Natural,Flood,Hydrological,Flash flood,,2020,November,25,2020,December,14,29,,691659,,691659,50000
+7068,Natural,Epidemic,Biological,Viral disease,Dengue,2011,September,,2011,September,,27,,37728,,37728,
+7069,Natural,Flood,Hydrological,Riverine flood,Monsoonal rain,2007,September,5,2007,November,10,10,,17000,,17000,
+7070,Natural,Storm,Meteorological,Tropical cyclone,Damrey,2005,September,26,2005,September,30,10,,2000,,2000,26505

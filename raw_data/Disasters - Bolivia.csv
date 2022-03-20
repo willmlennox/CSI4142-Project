@@ -1,0 +1,11 @@
+EventKey,Disaster Group,Disaster Subgroup,Disaster Type,Disaster Subtype,Event Name,Start Year,Start Month,Start Day,End Year,End Month,End Day,Total Deaths,No Injured,No Affected,No Homeless,Total Affected,"Total Damages, Adjusted ('000 US$)"
+7001,Natural,Flood,Hydrological,Riverine flood,,2007,December,15,2008,February,20,75,,485000,,485000,624115
+7002,Natural,Epidemic,Biological,Viral disease,Dengue,2010,November,,2011,December,,29,,25236,,25236,
+7003,Natural,Flood,Hydrological,Riverine flood,,2010,January,1,2010,January,13,26,,227860,,227860,
+7004,Technological,Transport accident,Technological,Road,,2010,June,27,2010,June,27,25,44,,,44,
+7005,Technological,Transport accident,Technological,Road,,2010,June,24,2010,June,24,13,37,,,37,
+7006,Natural,Extreme temperature ,Meteorological,Heat wave,,2013,August,,2013,August,,18,,17490,,17490,
+7007,Natural,Flood,Hydrological,Riverine flood,,2014,October,,2015,February,,38,,185120,,185120,
+7008,Natural,Drought,Climatological,Drought,,2016,March,,2016,December,,,,665000,,665000,485256
+7009,Natural,Wildfire,Climatological,Forest fire,,2019,August,,2019,September,,,,36000,,36000,
+7010,Natural,Flood,Hydrological,,,2019,February,24,2019,April,10,60,,335540,,335540,

@@ -1,0 +1,11 @@
+EventKey,Disaster Group,Disaster Subgroup,Disaster Type,Disaster Subtype,Event Name,Start Year,Start Month,Start Day,End Year,End Month,End Day,Total Deaths,No Injured,No Affected,No Homeless,Total Affected,"Total Damages, Adjusted ('000 US$)"
+7041,Natural,Earthquake,Geophysical,Ground movement,,2006,May,26,2006,May,26,5778,137883,2340745,699295,3177923,3979900
+7042,Natural,Epidemic,Biological,Viral disease,Dengue,2007,July,,2007,July,,365,,34542,,34542,
+7043,Technological,Miscellaneous accident,Technological,Fire,Karaoke club,2009,December,4,2009,December,4,20,13,,,13,
+7044,Natural,Earthquake,Geophysical,Tsunami,,2010,October,25,2010,October,25,530,412,11452,,11864,
+7045,Technological,Transport accident,Technological,Water,"Ferry ""Laut Teduh II""",2011,January,28,2011,January,28,27,200,427,,627,
+7046,Natural,Storm,Meteorological,Convective storm,Tropical Cyclone Iggy,2012,January,25,2012,January,25,16,60,10000,,10060,1127
+7047,Technological,Industrial accident,Technological,Collapse,Gold mine,2013,May,14,2013,May,14,28,,10,,10,
+7048,Natural,Storm,Meteorological,Tropical cyclone,Cyclone 'Cempaka',2017,November,28,2017,November,29,11,35,,2000,2035,
+7049,Technological,Industrial accident,Technological,Explosion,Oil well,2018,April,25,2018,April,25,21,38,,,38,
+7050,Natural,Flood,Hydrological,,,2020,July,3,2020,July,31,105,51,14483,,14534,10000

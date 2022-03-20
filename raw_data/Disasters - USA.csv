@@ -1,0 +1,11 @@
+EventKey,Disaster Group,Disaster Subgroup,Disaster Type,Disaster Subtype,Event Name,Start Year,Start Month,Start Day,End Year,End Month,End Day,Total Deaths,No Injured,No Affected,No Homeless,Total Affected,"Total Damages, Adjusted ('000 US$)"
+7071,Natural,Storm,Meteorological,Tropical cyclone,Rita,2005,September,23,2005,October,1,10,,300000,,300000,21204073
+7072,Natural,Storm,Meteorological,Tropical cyclone,"Hurricane ""Gustav""",2008,September,1,2008,September,1,43,,2100000,,2100000,8414572
+7073,Technological,Miscellaneous accident,Technological,Explosion,Gas pipeline,2010,September,9,2010,September,9,8,60,,111,171,296726
+7074,Natural,Storm,Meteorological,Tropical cyclone,Tropical storm Debby,2012,June,22,2012,June,27,9,1,17000,,17001,236724
+7075,Natural,Earthquake,Geophysical,Ground movement,,2014,August,24,2014,August,24,1,250,3000,,3250,765273
+7076,Technological,Industrial accident,Technological,Gas leak,Storage facility,2015,October,23,2015,October,23,,660,7574,,8234,
+7077,Technological,Miscellaneous accident,Technological,Fire,Appartment building,2017,December,28,2017,December,28,13,3,,,3,
+7078,Natural,Wildfire,Climatological,Forest fire,Camp Fire,2018,June,1,2018,December,31,88,,250000,,250000,17006254
+7079,Natural,Storm,Meteorological,Tropical cyclone,Hurricane Florence,2018,September,12,2018,September,18,53,,1500000,,1500000,14429549
+7080,Natural,Storm,Meteorological,Tropical cyclone,Hurricane 'Laura',2020,August,27,2020,August,28,33,,6500,,6500,13000000

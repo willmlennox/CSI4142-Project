@@ -1,0 +1,11 @@
+EventKey,Disaster Group,Disaster Subgroup,Disaster Type,Disaster Subtype,Event Name,Start Year,Start Month,Start Day,End Year,End Month,End Day,Total Deaths,No Injured,No Affected,No Homeless,Total Affected,"Total Damages, Adjusted ('000 US$)"
+7021,Technological,Miscellaneous accident,Technological,Other,Poisoning,2005,May,8,2005,May,8,,155,,,155,
+7022,Technological,Industrial accident,Technological,Explosion,Propone gaz facility,2008,August,10,2008,August,10,2,18,12500,,12518,
+7023,Natural,Storm,Meteorological,Convective storm,,2012,August,12,2012,August,12,,,,,,1183619
+7024,Natural,Flood,Hydrological,Riverine flood,,2013,June,20,2013,June,27,4,,100000,,100000,6332599
+7025,Natural,Storm,Meteorological,Convective storm,,2013,July,8,2013,July,9,,,,,,1566485
+7026,Technological,Transport accident,Technological,Rail,,2013,July,6,2013,July,6,47,,2000,,2000,261081
+7027,Natural,Wildfire,Climatological,Forest fire,Fort McMurray wildfires,2016,May,1,2016,July,4,,,88000,,88000,4313390
+7028,Natural,Storm,Meteorological,Convective storm,,2018,September,21,2018,September,21,,30,900,,930,334972
+7029,Natural,Flood,Hydrological,,,2019,April,27,2019,May,5,1,,19500,,19500,809869
+7030,Natural,Storm,Meteorological,Convective storm,,2020,June,13,2020,June,14,,,60000,,60000,1200000
