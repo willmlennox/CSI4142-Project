@@ -43,35 +43,150 @@ def lifeExpQuery(cur):
     data = cur.fetchall()
 
     for row in data:
+        if (row[2] == None or row[3] == None):
+            continue
         country_names.append(row[0])
         years.append(row[1])
-        if (row[2] == None or row[3] == None):
-            life_exp.append(None)
-        else:
-            life_exp.append((row[2] + row[3])/2)
+        life_exp.append(float((row[2] + row[3])/2))
 
     return (country_names, years, life_exp)
 
 
-def scatterPlotLifeExp(data):
+def adultLiteracyQuery(cur):
+    country_names = []
+    years = []
+    adult_literacy = []
+    sql = """
+    select c."Name", m."Year", e."Literacy rate, adult female (% of females ages 15 and above)", e."Literacy rate, adult male (% of males ages 15 and above)"
+    from "Fact_Table" as f
+    join "Education" as e on e."EducationKey" = f."EducationKey"
+    join "Country" as c on c."CountryKey" = f."CountryKey"
+    join "Month" as m on m."MonthKey" = f."MonthKey"
+    """
+    cur.execute(sql)
+    data = cur.fetchall()
+
+    for row in data:
+        if (row[2] == None or row[3] == None):
+            continue
+        country_names.append(row[0])
+        years.append(row[1])
+        adult_literacy.append(float((row[2] + row[3])/2))
+
+    return (country_names, years, adult_literacy)
+
+
+def grossEnrollmentQuery(cur):
+    country_names = []
+    years = []
+    gross_enrollment = []
+    sql = """
+    select c."Name", m."Year", e."School enrollment, primary, female (% gross)", e."School enrollment, primary, male (% gross)", 
+    e."School enrollment, secondary, female (% gross)", e."School enrollment, secondary, male (% gross)",
+    e."School enrollment, tertiary (% gross)"
+    from "Fact_Table" as f
+    join "Education" as e on e."EducationKey" = f."EducationKey"
+    join "Country" as c on c."CountryKey" = f."CountryKey"
+    join "Month" as m on m."MonthKey" = f."MonthKey"
+    """
+    cur.execute(sql)
+    data = cur.fetchall()
+
+    for row in data:
+        i = 2
+        c = 0
+        t = 0
+
+        while i < len(row):
+            if row[i] == None:
+                i += 1
+                continue
+            else:
+                t += row[i]
+                i += 1
+                c += 1
+        if c == 0:
+            continue
+        else:
+            gross_enrollment.append(float(t/(c*100)))
+            country_names.append(row[0])
+            years.append(row[1])
+
+    return (country_names, years, gross_enrollment)
+
+
+def gniPerCapQuery(cur):
+    country_names = []
+    years = []
+    gni_per_capita = []
+    sql = """
+    select c."Name", m."Year", c."GNI per capita (US$)"
+    from "Fact_Table" as f
+    join "Country" as c on c."CountryKey" = f."CountryKey"
+    join "Month" as m on m."MonthKey" = f."MonthKey"
+    """
+    cur.execute(sql)
+    data = cur.fetchall()
+
+    for row in data:
+        if (row[2] == None):
+            continue
+        country_names.append(row[0])
+        years.append(row[1])
+        gni_per_capita.append(float(row[2].replace('$', '').replace(',', '')))
+
+    return (country_names, years, gni_per_capita)
+
+
+def scatterPlot(data, life_exp, fig):
     country = np.asarray(data[0])
     year = np.asarray(data[1])
     lifeExp = np.asarray(data[2])
+
+    plt.figure(fig)
     
     for i in range(len(country)):
         plt.scatter(year[i], lifeExp[i], color=COUNTRY_COLOURS[country[i]], label=country[i])
     plt.legend(handles=[mpatches.Patch(color=COUNTRY_COLOURS[c], label=c) for c in COUNTRIES])
     plt.xlabel('Year')
-    plt.ylabel('Life Expectancy Average (Years)')
-    plt.show()
+    if life_exp:
+        plt.ylabel('Life Expectancy Average (Years)')
+    else:
+        plt.ylabel('GNI per capita (US$)')
 
 
-def boxPlot():
-    pass
+def boxPlotEdu(data, literacy, fig):
+    country = np.asarray(data[0])
+    lifeExp = np.asarray(data[2])
+
+    plt.figure(fig)
+
+    d = []
+    for c in COUNTRIES:
+        a = []
+        for i in range(len(country)):
+            if country[i] == c:
+                a.append(lifeExp[i])
+        d.append(a)
+    
+    plt.boxplot(d, vert=0, patch_artist=True, labels=COUNTRIES)
+    if literacy:
+        plt.xlabel('Adult Literacy Rate')
+    else:
+        plt.xlabel('Gross Enrollment')
 
 
-def histogram():
-    pass
+def histogramGni(data):
+    country = np.asarray(data[0])
+    year = np.asarray(data[1])
+    gni = np.asarray(data[2])
+
+    plt.figure(4)
+    
+    for i in range(len(country)):
+        plt.hist(gni[i])
+    # plt.xlabel('Year')
+    plt.xlabel('GNI per capita (US$)')
 
 
 if __name__ == '__main__':
@@ -79,7 +194,18 @@ if __name__ == '__main__':
     cur = conn.cursor()
 
     lifeExp = lifeExpQuery(cur)
-    scatterPlotLifeExp(lifeExp)
+    scatterPlot(lifeExp, True, 1)
+
+    adultLiteracy = adultLiteracyQuery(cur)
+    boxPlotEdu(adultLiteracy, True, 3)
+
+    grossEnrollment = grossEnrollmentQuery(cur)
+    boxPlotEdu(grossEnrollment, False, 4)
+
+    gniPerCap = gniPerCapQuery(cur)
+    scatterPlot(gniPerCap, False, 2)
+
+    plt.show()
 
     cur.close()
     conn.close()
