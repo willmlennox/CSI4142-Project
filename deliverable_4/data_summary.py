@@ -115,6 +115,27 @@ def grossEnrollmentQuery(cur):
     return (country_names, years, gross_enrollment)
 
 
+def diQuery(cur):
+    country_names = []
+    di = []
+    sql = """
+    select c."Name", f."Development Index", f."CountryKey"
+    from "Fact_Table" f, "Country" c
+    where f."CountryKey" < 5145 and c."CountryKey" = f."CountryKey"
+    limit 144
+    """
+    cur.execute(sql)
+    data = cur.fetchall()
+
+    for row in data:
+        if (row[1] == None):
+            continue
+        country_names.append(row[0])
+        di.append(float(row[1]))
+
+    return (country_names, di)
+
+
 def gniPerCapQuery(cur):
     country_names = []
     years = []
@@ -176,17 +197,14 @@ def boxPlotEdu(data, literacy, fig):
         plt.xlabel('Gross Enrollment')
 
 
-def histogramGni(data):
-    country = np.asarray(data[0])
-    year = np.asarray(data[1])
-    gni = np.asarray(data[2])
+def histogramDi(data, fig):
+    di = np.asarray(data[1])
 
-    plt.figure(4)
+    plt.figure(fig)
     
-    for i in range(len(country)):
-        plt.hist(gni[i])
-    # plt.xlabel('Year')
-    plt.xlabel('GNI per capita (US$)')
+    plt.hist(di)
+
+    plt.xlabel('Development Index')
 
 
 if __name__ == '__main__':
@@ -196,14 +214,17 @@ if __name__ == '__main__':
     lifeExp = lifeExpQuery(cur)
     scatterPlot(lifeExp, True, 1)
 
+    gniPerCap = gniPerCapQuery(cur)
+    scatterPlot(gniPerCap, False, 2)
+
     adultLiteracy = adultLiteracyQuery(cur)
     boxPlotEdu(adultLiteracy, True, 3)
 
     grossEnrollment = grossEnrollmentQuery(cur)
     boxPlotEdu(grossEnrollment, False, 4)
 
-    gniPerCap = gniPerCapQuery(cur)
-    scatterPlot(gniPerCap, False, 2)
+    di = diQuery(cur)
+    histogramDi(di, 5)
 
     plt.show()
 
