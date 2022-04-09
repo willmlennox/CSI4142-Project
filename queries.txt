@@ -1,0 +1,138 @@
+# PART 1 a. (Drill down)
+# 2 drill downs
+# QUARTER -> YEAR
+# Continent -> Region
+# gets year, region name and Max HD
+
+SELECT  mo."Year", co."Region", MAX(f."Human Development Index") as "Max HDI"
+FROM "Education" e, "Fact_Table" f, "Country" co, "Month" mo
+WHERE e."EducationKey" = f."EducationKey" AND
+co."CountryKey" = f."CountryKey" AND
+mo."MonthKey" = f."MonthKey"
+GROUP BY mo."Year", co."Region"
+ORDER BY mo."Year", co."Region" ASC
+
+# PART 1 a. (Roll up)
+
+SELECT mo."Decade", mo."Year", AVG(f."Human Development Index") as "AVG HDI"
+FROM "Fact_Table" f, "Month" mo
+WHERE mo."MonthKey" = f."MonthKey" AND
+mo."Decade" IS NOT NULL
+GROUP BY ROLLUP (mo."Decade", mo."Year")
+ORDER BY mo."Decade"
+
+# PART 1 b. Slice
+
+SELECT co."Name" as "Country Name", mo."Decade" as "Decade", AVG(f."Quality of Life Index") as "AVG Quality of Life Index"
+FROM "Fact_Table" f, "Country" co, "Month" mo
+WHERE co."CountryKey" = f."CountryKey" AND
+mo."MonthKey" = f."MonthKey" AND
+mo."Decade" = 2
+GROUP BY "Country Name", "Decade"
+ORDER BY co."Name"
+
+# PART 1 c. Dice
+
+SELECT co."Name", mo."Year", e."Total Affected", Max(f."Development Index") as "Max Development Index"
+FROM "Event" e, "Fact_Table" f, "Month" mo, "Country" co
+WHERE co."CountryKey" = f."CountryKey" AND
+e."EventKey" = f."EventKey" AND
+mo."MonthKey" = f."MonthKey" AND
+(mo."Year" = '2010' or mo."Year" = '2011') AND
+e."Total Affected" > 10000
+GROUP BY co."Name", mo."Year", e."Total Affected"
+ORDER BY mo."Year"
+
+# PART 1 d. Combining OLAP operations
+
+# Combining OLAP operations 1
+# DICE, SLICE, Drill down,
+# Dice on unemployment, slice on Brazil, drill down country to Name and Year
+
+SELECT mo."Year", co."Name", q."Unemployment, male (% of male labor force)", q."Unemployment, female (% of female labor force)", ROUND(AVG(f."Human Development Index"), 3) AS "AVG HDI"
+FROM "Month" mo, "Fact_Table" f, "Country" co, "Quality of Life" q
+WHERE mo."MonthKey" = f."MonthKey" AND
+co."CountryKey" = f."CountryKey" AND
+q."QualityOfLifeKey" = f."QualityOfLifeKey" AND
+q."Unemployment, male (% of male labor force)" > 7 AND
+q."Unemployment, female (% of female labor force)" > 7 AND
+co."Name" = 'Brazil'
+GROUP BY mo."Year", co."Name", q."Unemployment, male (% of male labor force)", q."Unemployment, female (% of female labor force)"
+ORDER BY mo."Year"
+
+# Combining OLAP operations 2
+# Drill down, Slice
+# Drill down to country name, slice country name = Indonesia
+
+SELECT DISTINCT co."Name" as "Country", (h."Immunization, measles (% of children ages 12-23 months)"), (h."Immunization, Pol3 (% of one-year-old children)"), (h."Immunization, DPT (% of children ages 12-23 months)"), (h."Number of infant deaths"), ROUND (AVG(f."Human Development Index"), 3) as "AVG HDI"
+FROM "Month" mo, "Fact_Table" f, "Country" co, "Health" h
+WHERE mo."MonthKey" = f."MonthKey" AND
+co."CountryKey" = f."CountryKey" AND
+h."HealthKey" = f."HealthKey" AND
+co."Name" = 'Indonesia'
+GROUP BY "Country", (h."Immunization, measles (% of children ages 12-23 months)"), (h."Immunization, Pol3 (% of one-year-old children)"), (h."Immunization, DPT (% of children ages 12-23 months)"), (h."Number of infant deaths")
+ORDER BY "AVG HDI" ASC
+
+# Combining OLAP operations 3
+# Dice, Rollup
+# Dice on year > 2011
+# Rollup Region and Name
+
+
+SELECT DISTINCT mo."Year", co."Region", co."Name", h."Capital health expenditure (% of GDP)", AVG(f."Quality of Life Index") as "AVG Quality of Life Index"
+FROM "Month" mo, "Fact_Table" f, "Country" co, "Health" h
+WHERE mo."MonthKey" = f."MonthKey" AND
+co."CountryKey" = f."CountryKey" AND
+h."HealthKey" = f."HealthKey" AND
+co."Region" = 'North America' AND
+mo."Year" > 2011
+GROUP BY ROLLUP(mo."Year", co."Region", co."Name", h."Capital health expenditure (% of GDP)")
+ORDER BY mo."Year" ASC
+
+# Combining OLAP operations 4
+# SLICE, Rollup
+# Slice on Decade = 1
+# rollup disaster type, disaster subtype
+
+SELECT e."Disaster Type", e."Disaster Subtype", MIN(f."Development Index") as "Minimum Development Index"
+FROM "Month" mo, "Fact_Table" f, "Country" co, "Event" e
+WHERE e."EventKey" = f."EventKey" AND
+mo."MonthKey" = f."MonthKey" AND
+mo."Decade" = 1
+GROUP BY ROLLUP (e."Disaster Type", e."Disaster Subtype")
+ORDER BY e."Disaster Type"
+
+# ICEBERG
+# Gets Max HDI of a Country in a year, limit to 10 results
+
+SELECT distinct m."Year", c."Name", Max(f."Human Development Index") as "Max HDI"
+FROM "Fact_Table" f,  "Country" c, "Month" m
+WHERE f."CountryKey" = c."CountryKey" AND
+f."MonthKey" = m."MonthKey" AND
+f."Human Development Index" is NOT NULL
+GROUP BY m."Year", c."Name"
+ORDER BY "Max HDI" ASC
+limit 10
+
+# Windowing (RANK)
+# ranks countries by year and access to rural drinking water services
+
+SELECT DISTINCT m."Year", c."Name", q."People using at least basic drinking water services, rural (% o",
+DENSE_RANK() OVER (
+Order BY q."People using at least basic drinking water services, rural (% o" DESC)
+FROM "Fact_Table" f,  "Country" c, "Month" m, "Quality of Life" q
+WHERE f."CountryKey" = c."CountryKey" AND
+f."MonthKey" = m."MonthKey" AND
+f."QualityOfLifeKey" = q."QualityOfLifeKey"
+ORDER BY "dense_rank" ASC
+
+# Window
+# shows a window of all the countries and their average HDI nad Quality of Life Index
+
+SELECT distinct c."Name", AVG(f."Human Development Index") OVER win AS "AVG Human Development Index" , AVG(f."Quality of Life Index") OVER win AS "AVG Quality of Life Index"
+FROM "Fact_Table" f, "Education" e, "Country" c, "Month" m
+WHERE f."EducationKey" = e."EducationKey" AND
+f."CountryKey" = c."CountryKey" AND
+f."MonthKey" = m."MonthKey"
+WINDOW win AS (PARTITION BY c."Name")
+ORDER BY c."Name"
